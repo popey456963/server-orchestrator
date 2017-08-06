@@ -24,7 +24,7 @@ app.post('/action/:node', async (req, res) => { res.json(await Manager.actionSer
 ;(async () => {
   await db.open('./db/sqlite.db')
   await db.all('CREATE TABLE IF NOT EXISTS instances (id TEXT, type TEXT, server_ip TEXT, server_port TEXT, running BOOLEAN);')
-  app.listen(3000, function () {
-    console.log('Example app listening on port 3000!')
+  app.listen(6400, function () {
+    console.log('Example app listening on port 6400!')
   })
 })()
