@@ -1,3 +1,6 @@
+const shortid = require('shortid')
+const SERVER_IP = '127.0.0.1'
+
 function listServers() {
   return new Promise(async (resolve) => {
     const info = await db.all('SELECT * FROM instances')

@@ -3,10 +3,7 @@ const Manager = require('./modules/Manager')
 global.db = require('sqlite')
 const express = require('express')
 const bodyParser = require('body-parser')
-const shortid = require('shortid')
 const app = express()
-
-const SERVER_IP = '127.0.0.1'
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -24,6 +21,7 @@ app.post('/action/:node', async (req, res) => { res.json(await Manager.actionSer
 ;(async () => {
   await db.open('./db/sqlite.db')
   await db.all('CREATE TABLE IF NOT EXISTS instances (id TEXT, type TEXT, server_ip TEXT, server_port TEXT, running BOOLEAN);')
+  // await db.all('CREATE TABLE IF NOT EXISTS server (id TEXT, server_ip TEXT)')
   app.listen(6400, function () {
     console.log('Example app listening on port 6400!')
   })
