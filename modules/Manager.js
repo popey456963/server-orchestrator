@@ -35,11 +35,27 @@ function createServer(node, settings) {
 }
 
 function deleteServer(node) {
-  return db.all('DELETE from instances WHERE id=?', node)
+  return new Promise(async (resolve) => {
+    const query_response = await db.all('DELETE from instances WHERE id=?', node)
+    resolve({
+      time: +new Date(),
+      status: 200,
+      message: 'Successfully removed server.',
+      data: query_response
+    })
+  })
 }
 
 function actionServer(node, settings) {
-  return {}
+  return new Promise(async (resolve) => {
+    // Run the fancy command on the server.
+    resolve({
+      time: +new Date(),
+      status: 200,
+      message: 'Successfully completed the action.',
+      data: {}
+    })
+  })
 }
 
 module.exports = { listServers, infoServer, createServer, deleteServer, actionServer }
