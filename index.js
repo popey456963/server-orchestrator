@@ -9,6 +9,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 if (process.env.NODE_ENV === 'production' && !process.env.KEY) throw new Error('Error, universal key not given.')
+if (process.env.NODE_ENV !== 'production') console.log('NOT RUNNING IN PRODUCTION MODE, NO AUTHENTICATION REQUIRED')
 
 app.get('/', async (req, res) => { res.json(await Manager.listServers()) })
 app.get('/server/:server', async (req, res) => { res.json(await Manager.infoServer(req.params.server)) })
