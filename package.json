@@ -1,5 +1,5 @@
 {
-  "name": "node-orchestrator",
+  "name": "server-orchestrator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

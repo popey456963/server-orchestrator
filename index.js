@@ -10,11 +10,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 if (process.env.NODE_ENV === 'production' && !process.env.KEY) throw new Error('Error, universal key not given.')
 
-app.get('/list', async (req, res) => { res.json(await Manager.listServers()) })
-app.get('/info/:node', async (req, res) => { res.json(await Manager.infoServer(req.params.node)) })
-app.post('/create', async (req, res) => { res.json(await Manager.createServer(req.params.node, req.body)) })
-app.delete('/delete/:node', async (req, res) => { res.json(await Manager.deleteServer(req.params.node)) })
-app.post('/action/:node', async (req, res) => { res.json(await Manager.actionServer(req.params.server, req.body)) })
+app.get('/', async (req, res) => { res.json(await Manager.listServers()) })
+app.get('/server/:server', async (req, res) => { res.json(await Manager.infoServer(req.params.server)) })
+app.post('/server', async (req, res) => { res.json(await Manager.createServer(req.params.server, req.body)) })
+app.delete('/server/:server', async (req, res) => { res.json(await Manager.deleteServer(req.params.server)) })
+app.post('/server/:server', async (req, res) => { res.json(await Manager.actionServer(req.params.server, req.body)) })
 
 // db { id, type, server_ip, server_port, running }
 
